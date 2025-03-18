@@ -5,28 +5,28 @@
       {
         "expression": {
           "type": "expression",
-          "expression": "T(String).valueOf(object.stringAttr)"
+          "expression": "T(String).valueOf(object['stringAtt']"
         },
         "property": "stringAttr"
       },
       {
         "expression": {
           "type": "expression",
-          "expression": "T(String).valueOf(object.intAttr)"
+          "expression": "T(String).valueOf(object['intValue'])"
         },
         "property": "intAttr"
       },
       {
         "expression": {
           "type": "expression",
-          "expression": "T(String).valueOf(object.longAttr)"
+          "expression": "T(String).valueOf(object['longValue'])"
         },
         "property": "longAttr"
       },
       {
         "expression": {
           "type": "expression",
-          "expression": "T(String).valueOf(object.bigDecimalAttr)"
+          "expression": "T(String).valueOf(object['bigDecimalValue'])"
         },
         "property": "bigDecimalAttr"
       }
