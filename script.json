@@ -1,60 +1,41 @@
 {
-  "script": {
-    "description": "Generic SpEL script to convert all attributes of an input object to string using variables",
-    "inputObject": {
-      "${name}": "${nameValue}",
-      "${age}": "${ageValue}",
-      "${salary}": "${salaryValue}",
-      "${id}": "${idValue}",
-      "${bonus}": "${bonusValue}",
-      "${active}": "${activeValue}",
-      "${createdAt}": "${createdAtValue}"
-    },
-    "typeCheckAndConversion": {
-      "${name}": {
-        "originalType": "T(${nameValue}.getClass()).getSimpleName()",
-        "convertedType": "String",
-        "value": "T(String).valueOf(${nameValue})"
+  "source": {
+    "type": "object",
+    "propertyExpressions": [
+      {
+        "expression": {
+          "type": "expression",
+          "expression": "T(String).valueOf(object.stringAttr)"
+        },
+        "property": "stringAttr"
       },
-      "${age}": {
-        "originalType": "T(${ageValue}.getClass()).getSimpleName()",
-        "convertedType": "String",
-        "value": "T(String).valueOf(${ageValue})"
+      {
+        "expression": {
+          "type": "expression",
+          "expression": "T(String).valueOf(object.intAttr)"
+        },
+        "property": "intAttr"
       },
-      "${salary}": {
-        "originalType": "T(${salaryValue}.getClass()).getSimpleName()",
-        "convertedType": "String",
-        "value": "T(String).valueOf(${salaryValue})"
+      {
+        "expression": {
+          "type": "expression",
+          "expression": "T(String).valueOf(object.longAttr)"
+        },
+        "property": "longAttr"
       },
-      "${id}": {
-        "originalType": "T(${idValue}.getClass()).getSimpleName()",
-        "convertedType": "String",
-        "value": "T(String).valueOf(${idValue})"
-      },
-      "${bonus}": {
-        "originalType": "T(${bonusValue}.getClass()).getSimpleName()",
-        "convertedType": "String",
-        "value": "T(String).valueOf(${bonusValue})"
-      },
-      "${active}": {
-        "originalType": "T(${activeValue}.getClass()).getSimpleName()",
-        "convertedType": "String",
-        "value": "T(String).valueOf(${activeValue})"
-      },
-      "${createdAt}": {
-        "originalType": "T(${createdAtValue}.getClass()).getSimpleName()",
-        "convertedType": "String",
-        "value": "T(String).valueOf(${createdAtValue})"
+      {
+        "expression": {
+          "type": "expression",
+          "expression": "T(String).valueOf(object.bigDecimalAttr)"
+        },
+        "property": "bigDecimalAttr"
       }
-    },
-    "outputObject": {
-      "${name}": "T(String).valueOf(${nameValue})",
-      "${age}": "T(String).valueOf(${ageValue})",
-      "${salary}": "T(String).valueOf(${salaryValue})",
-      "${id}": "T(String).valueOf(${idValue})",
-      "${bonus}": "T(String).valueOf(${bonusValue})",
-      "${active}": "T(String).valueOf(${activeValue})",
-      "${createdAt}": "T(String).valueOf(${createdAtValue})"
+    ]
+  },
+  "targets": [
+    {
+      "type": "property",
+      "target": "TransformedObject"
     }
-  }
+  ]
 }
