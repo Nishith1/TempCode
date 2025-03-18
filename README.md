@@ -1,55 +1,60 @@
-# TempCode
-
 {
   "script": {
-    "description": "Generic SpEL script to convert all attributes of an input object to string",
+    "description": "Generic SpEL script to convert all attributes of an input object to string using variables",
     "inputObject": {
-      "name": "Alice",
-      "age": 30,
-      "salary": 75000.50,
-      "id": 1234567890123456789,
-      "bonus": 1500.75,
-      "active": true,
-      "createdAt": "2025-03-17T10:15:30"
+      "${name}": "${nameValue}",
+      "${age}": "${ageValue}",
+      "${salary}": "${salaryValue}",
+      "${id}": "${idValue}",
+      "${bonus}": "${bonusValue}",
+      "${active}": "${activeValue}",
+      "${createdAt}": "${createdAtValue}"
     },
-    "expressions": [
-      {
-        "attribute": "name",
-        "expression": "T(String).valueOf('Alice')"
+    "typeCheckAndConversion": {
+      "${name}": {
+        "originalType": "T(${nameValue}.getClass()).getSimpleName()",
+        "convertedType": "String",
+        "value": "T(String).valueOf(${nameValue})"
       },
-      {
-        "attribute": "age",
-        "expression": "T(String).valueOf(30)"
+      "${age}": {
+        "originalType": "T(${ageValue}.getClass()).getSimpleName()",
+        "convertedType": "String",
+        "value": "T(String).valueOf(${ageValue})"
       },
-      {
-        "attribute": "salary",
-        "expression": "T(String).valueOf(75000.50)"
+      "${salary}": {
+        "originalType": "T(${salaryValue}.getClass()).getSimpleName()",
+        "convertedType": "String",
+        "value": "T(String).valueOf(${salaryValue})"
       },
-      {
-        "attribute": "id",
-        "expression": "T(String).valueOf(1234567890123456789)"
+      "${id}": {
+        "originalType": "T(${idValue}.getClass()).getSimpleName()",
+        "convertedType": "String",
+        "value": "T(String).valueOf(${idValue})"
       },
-      {
-        "attribute": "bonus",
-        "expression": "T(String).valueOf(T(java.math.BigDecimal).valueOf(1500.75))"
+      "${bonus}": {
+        "originalType": "T(${bonusValue}.getClass()).getSimpleName()",
+        "convertedType": "String",
+        "value": "T(String).valueOf(${bonusValue})"
       },
-      {
-        "attribute": "active",
-        "expression": "T(String).valueOf(true)"
+      "${active}": {
+        "originalType": "T(${activeValue}.getClass()).getSimpleName()",
+        "convertedType": "String",
+        "value": "T(String).valueOf(${activeValue})"
       },
-      {
-        "attribute": "createdAt",
-        "expression": "T(String).valueOf('2025-03-17T10:15:30')"
+      "${createdAt}": {
+        "originalType": "T(${createdAtValue}.getClass()).getSimpleName()",
+        "convertedType": "String",
+        "value": "T(String).valueOf(${createdAtValue})"
       }
-    ],
+    },
     "outputObject": {
-      "name": "Alice",
-      "age": "30",
-      "salary": "75000.50",
-      "id": "1234567890123456789",
-      "bonus": "1500.75",
-      "active": "true",
-      "createdAt": "2025-03-17T10:15:30"
+      "${name}": "T(String).valueOf(${nameValue})",
+      "${age}": "T(String).valueOf(${ageValue})",
+      "${salary}": "T(String).valueOf(${salaryValue})",
+      "${id}": "T(String).valueOf(${idValue})",
+      "${bonus}": "T(String).valueOf(${bonusValue})",
+      "${active}": "T(String).valueOf(${activeValue})",
+      "${createdAt}": "T(String).valueOf(${createdAtValue})"
     }
   }
 }
