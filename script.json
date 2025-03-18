@@ -3,39 +3,30 @@
     "type": "object",
     "propertyExpressions": [
       {
-        "expression": {
-          "type": "expression",
-          "expression": "T(String).valueOf(object['stringAtt']"
-        },
-        "property": "stringAttr"
+        "expression": "T(java.lang.String).valueOf(input.intValue)",
+        "property": "intAsString",
+        "required": false
       },
       {
-        "expression": {
-          "type": "expression",
-          "expression": "T(String).valueOf(object['intValue'])"
-        },
-        "property": "intAttr"
+        "expression": "T(java.lang.String).valueOf(input.doubleValue)",
+        "property": "doubleAsString",
+        "required": false
       },
       {
-        "expression": {
-          "type": "expression",
-          "expression": "T(String).valueOf(object['longValue'])"
-        },
-        "property": "longAttr"
+        "expression": "T(java.lang.String).valueOf(input.booleanValue)",
+        "property": "booleanAsString",
+        "required": false
       },
       {
-        "expression": {
-          "type": "expression",
-          "expression": "T(String).valueOf(object['bigDecimalValue'])"
-        },
-        "property": "bigDecimalAttr"
+        "expression": "T(java.lang.String).valueOf(input.dateValue)",
+        "property": "dateAsString",
+        "required": false
+      },
+      {
+        "expression": "T(java.lang.String).valueOf(input.objectValue)",
+        "property": "objectAsString",
+        "required": false
       }
     ]
-  },
-  "targets": [
-    {
-      "type": "property",
-      "target": "TransformedObject"
-    }
-  ]
+  }
 }
