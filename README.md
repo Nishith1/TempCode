@@ -1,61 +1,8 @@
-{
-  "script": {
-    "description": "Generic SpEL script to convert all attributes of an input object to string using variables",
-    "inputObject": {
-      "${name}": "${nameValue}",
-      "${age}": "${ageValue}",
-      "${salary}": "${salaryValue}",
-      "${id}": "${idValue}",
-      "${bonus}": "${bonusValue}",
-      "${active}": "${activeValue}",
-      "${createdAt}": "${createdAtValue}"
-    },
-    "typeCheckAndConversion": {
-      "${name}": {
-        "originalType": "T(${nameValue}.getClass()).getSimpleName()",
-        "convertedType": "String",
-        "value": "T(String).valueOf(${nameValue})"
-      },
-      "${age}": {
-        "originalType": "T(${ageValue}.getClass()).getSimpleName()",
-        "convertedType": "String",
-        "value": "T(String).valueOf(${ageValue})"
-      },
-      "${salary}": {
-        "originalType": "T(${salaryValue}.getClass()).getSimpleName()",
-        "convertedType": "String",
-        "value": "T(String).valueOf(${salaryValue})"
-      },
-      "${id}": {
-        "originalType": "T(${idValue}.getClass()).getSimpleName()",
-        "convertedType": "String",
-        "value": "T(String).valueOf(${idValue})"
-      },
-      "${bonus}": {
-        "originalType": "T(${bonusValue}.getClass()).getSimpleName()",
-        "convertedType": "String",
-        "value": "T(String).valueOf(${bonusValue})"
-      },
-      "${active}": {
-        "originalType": "T(${activeValue}.getClass()).getSimpleName()",
-        "convertedType": "String",
-        "value": "T(String).valueOf(${activeValue})"
-      },
-      "${createdAt}": {
-        "originalType": "T(${createdAtValue}.getClass()).getSimpleName()",
-        "convertedType": "String",
-        "value": "T(String).valueOf(${createdAtValue})"
-      }
-    },
-    "outputObject": {
-      "${name}": "T(String).valueOf(${nameValue})",
-      "${age}": "T(String).valueOf(${ageValue})",
-      "${salary}": "T(String).valueOf(${salaryValue})",
-      "${id}": "T(String).valueOf(${idValue})",
-      "${bonus}": "T(String).valueOf(${bonusValue})",
-      "${active}": "T(String).valueOf(${activeValue})",
-      "${createdAt}": "T(String).valueOf(${createdAtValue})"
-    }
-  }
-}
+Clean Code is not just about writing code that works—it’s about writing code that’s readable, maintainable, and expressive. As systems grow, so does the cost of messy code. Clean code minimizes that cost by promoting clarity, simplicity, and discipline.
 
+Crafted with care, clean code is easy to understand and modify. It empowers teams to move fast without breaking things, reduces bugs, improves collaboration, and makes onboarding smoother.
+
+“Even bad code can function. But if code isn’t clean, it can bring a development organization to its knees.”
+— Robert C. Martin (Uncle Bob)
+
+This document summarizes the timeless principles from the book Clean Code by Uncle Bob—chapter by chapter—with real-world examples and practical takeaways tailored for professional software engineers.
