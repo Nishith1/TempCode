@@ -1,93 +1,98 @@
-{expand:title=💬 Chapter 4: Comments}
+{expand:title=📐 Chapter 5: Formatting}
 *h2. 🔑 Key Takeaway*  
-The best code needs no comments. Comments are a *failure to express intent through code itself*. Use them only when necessary, and never to excuse bad code.
+Code formatting is about communication. Well-formatted code is easier to read, understand, and maintain — it expresses structure and intent clearly.
 
 ---
 
-*h3. 🚫 Most Comments Are Bad*
+*h3. 🧭 Why Formatting Matters*
 
-- Comments are often used as a crutch for unclear code.
-- They rot easily — becoming outdated and misleading.
-- Clean code should be *self-explanatory* without comments.
-
----
-
-*h3. ✅ When Comments Are Acceptable*
-
-# *Legal or Licensing Information*  
-Required by law or company policy.
-
-# *Clarifying Intent (when code cannot express it well)*  
-{code:java}
-// Use binary search for optimal performance with large arrays
-int index = binarySearch(data, target);
-{code}
-
-# *Warning of Consequences*  
-{code:java}
-// Do not delete before archiving — critical audit trail
-archive(transaction);
-{code}
-
-# *TODOs (temporary but visible notes)*  
-{code:java}
-// TODO: Replace this with an async retry mechanism
-{code}
+- Developers read code more often than they write it.
+- Consistent formatting allows readers to grasp structure and flow quickly.
+- Code is a form of written communication, not just instruction to machines.
 
 ---
 
-*h3. 🚫 Examples of Bad Comments*
+*h3. 📐 Vertical Formatting*
 
-# *Redundant Comments*  
+# *Small files are better*  
+  - Limit files to 200–500 lines if possible.
+  - Each file should represent a cohesive concept.
+
+# *Vertical density*  
+  - Group related code blocks together.
+  - Use blank lines to separate logical sections.
+
+# *Ordering of functions*  
+  - Organize from high-level to low-level (top-down narrative).
+  - Functions called higher in the call stack appear above helpers.
+
+---
+
+*h3. ↔️ Horizontal Formatting*
+
+# *Line length*  
+  - Limit lines to ~100–120 characters.
+  - Break long expressions into smaller ones.
+
+# *Consistent indentation*  
+  - Indentation must reflect block structure.
+  - Avoid deep nesting by extracting functions.
+
+# *Spaces matter*  
+  - Use spacing to aid clarity:
 {code:java}
-// increment i
-i++; 
+// Better
+if (user.isActive()) {
+    sendEmail(user);
+}
+// Worse
+if(user.isActive()){sendEmail(user);}
 {code}
 
-# *Misleading or Outdated Comments*  
+---
+
+*h3. 📦 Code Blocks and Indentation*
+
+- Each block enclosed in `{}` should be properly indented.
+- Keep nesting shallow — no more than 2-3 levels.
+- Use early returns to reduce nested `if-else` blocks.
+
+---
+
+*h3. 🧪 Formatting Example*
+
+*❌ Poor Formatting:*
 {code:java}
-// set timeout to 5 seconds
-setTimeout(3000); // actually 3 seconds
+public void process(){if(user!=null){if(user.isActive()){sendEmail(user);}}}
 {code}
 
-# *Noise Comments*  
+*✅ Clean Formatting:*
 {code:java}
-// Check if user is null
-if (user != null) {
-    ...
+public void process() {
+    if (user == null) return;
+
+    if (user.isActive()) {
+        sendEmail(user);
+    }
 }
 {code}
 
 ---
 
-*h3. 🧼 Best Practice: Code Should Explain Itself*
+*h3. 📌 Formatting Best Practices*
 
-Instead of this:
-{code:java}
-// Check if employee is eligible for bonus
-if (employee.getTenure() > 5 && employee.getPerformanceRating() > 4) {
-{code}
-
-Write this:
-{code:java}
-if (employee.isEligibleForBonus()) {
-{code}
+|| Guideline                  || Recommendation                    ||
+| File length                 | ~200–500 lines                    |
+| Function order              | High-level first                  |
+| Blank lines                 | Use to separate logic sections    |
+| Max line length             | 100–120 characters                |
+| Indentation                 | Consistent and meaningful         |
+| Nesting depth               | Keep shallow (≤2–3 levels)        |
+| Vertical openness/density  | Structure should "breathe"        |
 
 ---
 
-*h3. 🧪 Comment Guideline Summary*
-
-|| Type of Comment       || Good? || Notes                              ||
-| Legal / License        | ✅     | Required in most projects           |
-| Explanation of Intent  | ✅     | When code alone isn't enough        |
-| Warning of Side Effects| ✅     | Critical operations                 |
-| TODOs                  | ✅     | Temporary with follow-up            |
-| Redundant / Obvious    | ❌     | Avoid                              |
-| Outdated or Wrong      | ❌     | Dangerous, must be removed          |
-
----
-
-*bq. “Don’t use a comment when you can make the code self-explanatory.”*  
+*bq. “You should take care that the formatting of your code maximizes its readability.”*  
 — *Robert C. Martin*
 
 {expand}
