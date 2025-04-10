@@ -1,78 +1,93 @@
-{expand:title=🧩 Chapter 3: Functions}
+{expand:title=💬 Chapter 4: Comments}
 *h2. 🔑 Key Takeaway*  
-Functions should be small, do *one thing*, and do it *well*. They are the building blocks of clean, understandable code.
+The best code needs no comments. Comments are a *failure to express intent through code itself*. Use them only when necessary, and never to excuse bad code.
 
 ---
 
-*h3. ✅ Key Principles of Clean Functions*
+*h3. 🚫 Most Comments Are Bad*
 
-# *Small in size*  
-  - Functions should be 2–4 lines whenever possible.
-  - If it’s over 20 lines, consider breaking it.
-
-# *Do one thing only*  
-  - A function should do one task and do it completely.
-  - If you can extract part of it and describe it with another verb, it does more than one thing.
-
-# *Use descriptive names*  
-  - Function names should clearly describe *what* they do.
-  - Use verbs for commands (e.g., `calculateTotal()`, `fetchOrders()`).
-
-# *Use fewer arguments*  
-  - Ideal: 0–2 arguments
-  - Avoid flag arguments (e.g., `isSorted = true`) — it means the function does more than one thing.
-
-# *Avoid side effects*  
-  - Functions should not alter global state or input objects unless that's the primary purpose.
-  - Pure functions are easier to test and reason about.
-
-# *Use command-query separation*  
-  - A function should either do something (command) *or* return something (query) — not both.
-
-# *Structured for readability*  
-  - Use meaningful white space and separation of concerns.
-  - The top-down narrative should be readable like prose.
+- Comments are often used as a crutch for unclear code.
+- They rot easily — becoming outdated and misleading.
+- Clean code should be *self-explanatory* without comments.
 
 ---
 
-*h3. 🧪 Examples*
+*h3. ✅ When Comments Are Acceptable*
 
-*❌ Bad:*
+# *Legal or Licensing Information*  
+Required by law or company policy.
+
+# *Clarifying Intent (when code cannot express it well)*  
 {code:java}
-public void processUserData(User user) {
-    validateUser(user);
-    saveUser(user);
-    sendWelcomeEmail(user);
-}
+// Use binary search for optimal performance with large arrays
+int index = binarySearch(data, target);
 {code}
 
-This function does *more than one thing*: validation, persistence, and notification.
-
-*✅ Good:*
+# *Warning of Consequences*  
 {code:java}
-public void onboardNewUser(User user) {
-    if (isValid(user)) {
-        registerUser(user);
-        notifyUser(user);
-    }
-}
+// Do not delete before archiving — critical audit trail
+archive(transaction);
+{code}
+
+# *TODOs (temporary but visible notes)*  
+{code:java}
+// TODO: Replace this with an async retry mechanism
 {code}
 
 ---
 
-*h3. 📌 Function Design Checklist*
+*h3. 🚫 Examples of Bad Comments*
 
-|| Principle                   || Recommendation                       ||
-| Small Size                  | Max 2–4 lines if possible             |
-| Do One Thing                | One clear purpose                     |
-| Good Name                   | Verb-based, descriptive               |
-| Few Arguments               | 0–2 preferred                         |
-| No Side Effects             | Especially hidden/global              |
-| Clear Structure             | Top-down readability                  |
+# *Redundant Comments*  
+{code:java}
+// increment i
+i++; 
+{code}
+
+# *Misleading or Outdated Comments*  
+{code:java}
+// set timeout to 5 seconds
+setTimeout(3000); // actually 3 seconds
+{code}
+
+# *Noise Comments*  
+{code:java}
+// Check if user is null
+if (user != null) {
+    ...
+}
+{code}
 
 ---
 
-*bq. “Functions should do something, or answer something, but not both.”*  
+*h3. 🧼 Best Practice: Code Should Explain Itself*
+
+Instead of this:
+{code:java}
+// Check if employee is eligible for bonus
+if (employee.getTenure() > 5 && employee.getPerformanceRating() > 4) {
+{code}
+
+Write this:
+{code:java}
+if (employee.isEligibleForBonus()) {
+{code}
+
+---
+
+*h3. 🧪 Comment Guideline Summary*
+
+|| Type of Comment       || Good? || Notes                              ||
+| Legal / License        | ✅     | Required in most projects           |
+| Explanation of Intent  | ✅     | When code alone isn't enough        |
+| Warning of Side Effects| ✅     | Critical operations                 |
+| TODOs                  | ✅     | Temporary with follow-up            |
+| Redundant / Obvious    | ❌     | Avoid                              |
+| Outdated or Wrong      | ❌     | Dangerous, must be removed          |
+
+---
+
+*bq. “Don’t use a comment when you can make the code self-explanatory.”*  
 — *Robert C. Martin*
 
 {expand}
