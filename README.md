@@ -1,71 +1,57 @@
-h2. 🏷️ Chapter 2: Meaningful Names
+h1. 🧼 Clean Code – Chapter Summaries
 
-*h3. 🔑 Key Takeaway*  
-Good naming is fundamental to writing clean code. Names should reveal *intent*, be *unambiguous*, and help readers *understand the system* without extra explanation.
+Below are summaries of chapters from the book *Clean Code* by Robert C. Martin. Expand each chapter to read more.
 
----
+{expand:title=📘 Chapter 1: Clean Code}
+*h2. 🔑 Key Takeaway*  
+Clean code is readable, maintainable, and shows the care of the developer.
 
-*h3. ✅ What Makes a Name “Meaningful”?*
+*h3. Quotes:*  
+- “Clean code is simple and direct.” — Grady Booch  
+- “Looks like it was written by someone who cares.” — Michael Feathers  
+- “Elegant and efficient.” — Bjarne Stroustrup
 
-# *Reveals intent*  
-A name should clearly express what the variable, function, or class is for.
+*h3. Characteristics:*  
+- Minimal duplication  
+- Clear structure  
+- Small functions  
+- Self-documenting names  
+- Well-tested
+
+*bq. “You know you are working with clean code when each routine you read turns out to be pretty much what you expected.”*
+{expand}
+
+{expand:title=🏷️ Chapter 2: Meaningful Names}
+*h2. 🔑 Key Takeaway*  
+Names should clearly reveal the intent and help in understanding the code without extra comments.
+
+*h3. Good Naming Principles:*
+# Reveals intent  
+# Avoids disinformation  
+# Is searchable  
+# Is pronounceable  
+# Follows conventions  
+# Avoids noise words
+
+*Example:*
 {code:java}
-    // Bad
-    int d; // what is 'd'?
+// Bad
+int d;
 
-    // Good
-    int elapsedTimeInDays;
+// Good
+int elapsedTimeInDays;
 {code}
 
-# *Avoids disinformation*  
-Avoid misleading names or names that mean something else in programming.  
-Don’t name a collection 'accountList' if it’s actually a Set.
-
-# *Makes code searchable*  
-Avoid single-letter variables like x or q. Prefer 'customerAddress' over 'addr'.
-
-# *Is pronounceable*  
+*Real-World Function Example:*
 {code:java}
-    // Bad
-    String genymdhms;
+// Poor
+public void getData() {}
 
-    // Good
-    String generationTimestamp;
+// Better
+public List<Customer> fetchActiveCustomers() {}
 {code}
 
-# *Follows conventions*  
-* Classes: Nouns (e.g., *OrderProcessor*, *UserProfile*)  
-* Methods: Verbs (e.g., *saveUser()*, *calculateTax()*)
-
-# *Avoids encodings*  
-No need for prefixes like *m_*, *i_*, or Hungarian notation in modern IDEs.
-
-# *Avoids noise words*  
-Words like *data*, *object*, or *info* don’t add value.  
-Prefer *address* over *addressInfo* or *addressData*.
-
----
-
-*h3. 🧪 Real-World Example*
-
-*❌ Poor Naming:*
-{code:java}
-public void getData() {
-    // does what?
-}
-{code}
-
-*✅ Better Naming:*
-{code:java}
-public List<Customer> fetchActiveCustomers() {
-    // clearly explains what is returned
-}
-{code}
-
----
-
-*h3. 🧼 Naming Tips Summary*
-
+*Summary Table:*
 || Principle               || Example                         ||
 | Reveal intent            | startDate vs d                   |
 | Be specific              | getActiveUsers() not getData()   |
@@ -73,7 +59,5 @@ public List<Customer> fetchActiveCustomers() {
 | Use domain terms         | Portfolio, Transaction           |
 | Be consistent            | get, set, fetch, calculate       |
 
----
-
-*bq. “The name of a variable, function, or class should answer all the big questions. It should tell you why it exists, what it does, and how it is used.”*  
-— *Robert C. Martin*
+*bq. “The name of a variable, function, or class should answer all the big questions. It should tell you why it exists, what it does, and how it is used.”*
+{expand}
