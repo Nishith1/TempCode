@@ -1,63 +1,78 @@
-h1. 🧼 Clean Code – Chapter Summaries
-
-Below are summaries of chapters from the book *Clean Code* by Robert C. Martin. Expand each chapter to read more.
-
-{expand:title=📘 Chapter 1: Clean Code}
+{expand:title=🧩 Chapter 3: Functions}
 *h2. 🔑 Key Takeaway*  
-Clean code is readable, maintainable, and shows the care of the developer.
+Functions should be small, do *one thing*, and do it *well*. They are the building blocks of clean, understandable code.
 
-*h3. Quotes:*  
-- “Clean code is simple and direct.” — Grady Booch  
-- “Looks like it was written by someone who cares.” — Michael Feathers  
-- “Elegant and efficient.” — Bjarne Stroustrup
+---
 
-*h3. Characteristics:*  
-- Minimal duplication  
-- Clear structure  
-- Small functions  
-- Self-documenting names  
-- Well-tested
+*h3. ✅ Key Principles of Clean Functions*
 
-*bq. “You know you are working with clean code when each routine you read turns out to be pretty much what you expected.”*
-{expand}
+# *Small in size*  
+  - Functions should be 2–4 lines whenever possible.
+  - If it’s over 20 lines, consider breaking it.
 
-{expand:title=🏷️ Chapter 2: Meaningful Names}
-*h2. 🔑 Key Takeaway*  
-Names should clearly reveal the intent and help in understanding the code without extra comments.
+# *Do one thing only*  
+  - A function should do one task and do it completely.
+  - If you can extract part of it and describe it with another verb, it does more than one thing.
 
-*h3. Good Naming Principles:*
-# Reveals intent  
-# Avoids disinformation  
-# Is searchable  
-# Is pronounceable  
-# Follows conventions  
-# Avoids noise words
+# *Use descriptive names*  
+  - Function names should clearly describe *what* they do.
+  - Use verbs for commands (e.g., `calculateTotal()`, `fetchOrders()`).
 
-*Example:*
+# *Use fewer arguments*  
+  - Ideal: 0–2 arguments
+  - Avoid flag arguments (e.g., `isSorted = true`) — it means the function does more than one thing.
+
+# *Avoid side effects*  
+  - Functions should not alter global state or input objects unless that's the primary purpose.
+  - Pure functions are easier to test and reason about.
+
+# *Use command-query separation*  
+  - A function should either do something (command) *or* return something (query) — not both.
+
+# *Structured for readability*  
+  - Use meaningful white space and separation of concerns.
+  - The top-down narrative should be readable like prose.
+
+---
+
+*h3. 🧪 Examples*
+
+*❌ Bad:*
 {code:java}
-// Bad
-int d;
-
-// Good
-int elapsedTimeInDays;
+public void processUserData(User user) {
+    validateUser(user);
+    saveUser(user);
+    sendWelcomeEmail(user);
+}
 {code}
 
-*Real-World Function Example:*
-{code:java}
-// Poor
-public void getData() {}
+This function does *more than one thing*: validation, persistence, and notification.
 
-// Better
-public List<Customer> fetchActiveCustomers() {}
+*✅ Good:*
+{code:java}
+public void onboardNewUser(User user) {
+    if (isValid(user)) {
+        registerUser(user);
+        notifyUser(user);
+    }
+}
 {code}
 
-*Summary Table:*
-|| Principle               || Example                         ||
-| Reveal intent            | startDate vs d                   |
-| Be specific              | getActiveUsers() not getData()   |
-| Avoid mental mapping     | customer not cust                |
-| Use domain terms         | Portfolio, Transaction           |
-| Be consistent            | get, set, fetch, calculate       |
+---
 
-*bq. “The name of a variable, function, or class should answer all the big questions. It should tell you why it exists, what it does, and how it is used.”*
+*h3. 📌 Function Design Checklist*
+
+|| Principle                   || Recommendation                       ||
+| Small Size                  | Max 2–4 lines if possible             |
+| Do One Thing                | One clear purpose                     |
+| Good Name                   | Verb-based, descriptive               |
+| Few Arguments               | 0–2 preferred                         |
+| No Side Effects             | Especially hidden/global              |
+| Clear Structure             | Top-down readability                  |
+
+---
+
+*bq. “Functions should do something, or answer something, but not both.”*  
+— *Robert C. Martin*
+
 {expand}
