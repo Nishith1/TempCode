@@ -1,9 +1,8 @@
-
 [
   {
     "source": {
       "type": "expression",
-      "expression": "virtualAccountNumber != null ? virtualAccountNumber.padLeft(23, '0') : null"
+      "expression": "virtualAccountNumber != null ? T(org.apache.commons.lang3.StringUtils).leftPad(virtualAccountNumber, 23, '0') : null"
     },
     "targets": [
       {
@@ -15,7 +14,7 @@
   {
     "source": {
       "type": "expression",
-      "expression": "physicalAccountNumber != null ? physicalAccountNumber.padLeft(23, '0') : null"
+      "expression": "physicalAccountNumber != null ? T(org.apache.commons.lang3.StringUtils).leftPad(physicalAccountNumber, 23, '0') : null"
     },
     "targets": [
       {
@@ -27,7 +26,7 @@
   {
     "source": {
       "type": "expression",
-      "expression": "bankIdentifier != null ? bankIdentifier.padLeft(10, '0') : null"
+      "expression": "bankIdentifier != null ? T(org.apache.commons.lang3.StringUtils).leftPad(bankIdentifier, 10, '0') : null"
     },
     "targets": [
       {
@@ -39,7 +38,7 @@
   {
     "source": {
       "type": "expression",
-      "expression": "primaryEcid != null ? primaryEcid.padLeft(10, '0') : null"
+      "expression": "primaryEcid != null ? T(org.apache.commons.lang3.StringUtils).leftPad(primaryEcid, 10, '0') : null"
     },
     "targets": [
       {
