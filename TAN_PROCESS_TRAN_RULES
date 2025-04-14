@@ -1,1 +1,63 @@
 
+[
+  {
+    "source": {
+      "type": "expression",
+      "expression": "virtualAccountNumber != null ? virtualAccountNumber.padLeft(23, '0') : null"
+    },
+    "targets": [
+      {
+        "type": "property",
+        "target": "virtualAccountNumber"
+      }
+    ]
+  },
+  {
+    "source": {
+      "type": "expression",
+      "expression": "physicalAccountNumber != null ? physicalAccountNumber.padLeft(23, '0') : null"
+    },
+    "targets": [
+      {
+        "type": "property",
+        "target": "physicalAccountNumber"
+      }
+    ]
+  },
+  {
+    "source": {
+      "type": "expression",
+      "expression": "bankIdentifier != null ? bankIdentifier.padLeft(10, '0') : null"
+    },
+    "targets": [
+      {
+        "type": "property",
+        "target": "bankIdentifier"
+      }
+    ]
+  },
+  {
+    "source": {
+      "type": "expression",
+      "expression": "primaryEcid != null ? primaryEcid.padLeft(10, '0') : null"
+    },
+    "targets": [
+      {
+        "type": "property",
+        "target": "primaryEcid"
+      }
+    ]
+  },
+  {
+    "source": {
+      "type": "expression",
+      "expression": "T(java.time.ZonedDateTime).of(T(java.time.LocalDateTime).parse(updatedTimestamp, T(java.time.format.DateTimeFormatter).ofPattern('yyyy-MM-dd HH:mm:ss')), T(java.time.ZoneId).of('America/New_York')).toString()"
+    },
+    "targets": [
+      {
+        "type": "property",
+        "target": "eventTimestamp"
+      }
+    ]
+  }
+]
