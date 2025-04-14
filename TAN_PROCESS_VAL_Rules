@@ -1,1 +1,86 @@
-
+[
+  {
+    "source": {
+      "type": "expression",
+      "expression": "virtualAccountNumber != null && virtualAccountNumber != '' && virtualAccountNumber matches '^\\d{1,23}$'"
+    },
+    "targets": [
+      {
+        "type": "property",
+        "target": "virtualAccountNumber"
+      }
+    ]
+  },
+  {
+    "source": {
+      "type": "expression",
+      "expression": "physicalAccountNumber != null && physicalAccountNumber != '' && physicalAccountNumber matches '^\\d{1,23}$'"
+    },
+    "targets": [
+      {
+        "type": "property",
+        "target": "physicalAccountNumber"
+      }
+    ]
+  },
+  {
+    "source": {
+      "type": "expression",
+      "expression": "bankIdentifier != null && bankIdentifier != '' && bankIdentifier matches '^(?=.{1,10}$)(1|2|34|53|101|111|121|201|501|552|601|602|662|702|703|802)$'"
+    },
+    "targets": [
+      {
+        "type": "property",
+        "target": "bankIdentifier"
+      }
+    ]
+  },
+  {
+    "source": {
+      "type": "expression",
+      "expression": "primaryEcid != null && primaryEcid != '' && primaryEcid matches '^\\d{1,10}$'"
+    },
+    "targets": [
+      {
+        "type": "property",
+        "target": "primaryEcid"
+      }
+    ]
+  },
+  {
+    "source": {
+      "type": "expression",
+      "expression": "accountState != null && accountState != '' && (accountState == 'ACTIVE' || accountState == 'INACTIVE')"
+    },
+    "targets": [
+      {
+        "type": "property",
+        "target": "accountState"
+      }
+    ]
+  },
+  {
+    "source": {
+      "type": "expression",
+      "expression": "updatedTimestamp != null && updatedTimestamp != ''"
+    },
+    "targets": [
+      {
+        "type": "property",
+        "target": "updatedTimestamp"
+      }
+    ]
+  },
+  {
+    "source": {
+      "type": "expression",
+      "expression": "creationTimestamp != null && creationTimestamp != ''"
+    },
+    "targets": [
+      {
+        "type": "property",
+        "target": "creationTimestamp"
+      }
+    ]
+  }
+]
