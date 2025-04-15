@@ -1,0 +1,23 @@
+
+The Outbox Pattern is a reliable message delivery strategy used in microservices to ensure data consistency between a service’s database and a message broker (like Kafka), especially in event-driven architectures.
+
+⸻
+
+Problem it Solves:
+
+In microservices, if you:
+	1.	Update the database (e.g., write to PostgreSQL)
+	2.	Then publish a message to Kafka
+
+These two operations aren’t atomic — if the system crashes after step 1 but before step 2, your event is never published, and other services miss the update.
+
+⸻
+
+Outbox Pattern to the Rescue
+
+How It Works:
+	1.	Write a DB change + event record in a single transaction
+	•	The event is saved in an outbox table in the same database.
+	•	This makes the DB change and event atomic.
+	2.	A separate background worker or CDC (Change Data Capture) process reads from the outbox table and publishes the event to Kafka.
+	3.	Once the message is successfully sent, the outbox entry is marked as “sent” or deleted.
