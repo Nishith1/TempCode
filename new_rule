@@ -2,24 +2,24 @@
   {
     "source": {
       "type": "expression",
-      "expression": "employer != null ? employer.substring(0, employer.length() > 5 ? 5 : employer.length()) : null"
+      "expression": "#EMPLOYER != null ? #EMPLOYER.substring(0, #EMPLOYER.length() > 30 ? 30 : #EMPLOYER.length()) : null"
     },
     "targets": [
       {
         "type": "property",
-        "target": "employer_name"
+        "target": "EMPLR_NM"
       }
     ]
   },
   {
     "source": {
       "type": "expression",
-      "expression": "#occupation_name != null && #employer_position != null ? #occupation_name + ' ' + #employer_position : (#occupation_name != null ? #occupation_name : #employer_position)"
+      "expression": "#OCCUPATION_NAME != null && #EMPLOYER_POSITION != null ? #OCCUPATION_NAME + ' ' + #EMPLOYER_POSITION : (#OCCUPATION_NAME != null ? #OCCUPATION_NAME : #EMPLOYER_POSITION)"
     },
     "targets": [
       {
         "type": "property",
-        "target": "finl_prof_cmts"
+        "target": "FINCL_PROF_CMNTS"
       }
     ]
   }
