@@ -2,7 +2,7 @@
   {
     "source": {
       "type": "expression",
-      "expression": "#EMPLOYER != null ? #EMPLOYER.substring(0, #EMPLOYER.length() > 30 ? 30 : #EMPLOYER.length()) : null"
+      "expression": "EMPLOYER != null ? T(org.apache.commons.lang3.StringUtils).left(EMPLOYER, 30) : null"
     },
     "targets": [
       {
@@ -14,7 +14,7 @@
   {
     "source": {
       "type": "expression",
-      "expression": "#OCCUPATION_NAME != null && #EMPLOYER_POSITION != null ? #OCCUPATION_NAME + ' ' + #EMPLOYER_POSITION : (#OCCUPATION_NAME != null ? #OCCUPATION_NAME : #EMPLOYER_POSITION)"
+      "expression": "OCCUPATION_NAME != null && EMPLOYER_POSITION != null ? OCCUPATION_NAME + ' ' + EMPLOYER_POSITION : (OCCUPATION_NAME != null ? OCCUPATION_NAME : EMPLOYER_POSITION)"
     },
     "targets": [
       {
@@ -24,3 +24,4 @@
     ]
   }
 ]
+
