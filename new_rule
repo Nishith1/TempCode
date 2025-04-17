@@ -1,0 +1,26 @@
+[
+  {
+    "source": {
+      "type": "expression",
+      "expression": "employer != null ? employer.substring(0, employer.length() > 5 ? 5 : employer.length()) : null"
+    },
+    "targets": [
+      {
+        "type": "property",
+        "target": "employer_name"
+      }
+    ]
+  },
+  {
+    "source": {
+      "type": "expression",
+      "expression": "#occupation_name != null && #employer_position != null ? #occupation_name + ' ' + #employer_position : (#occupation_name != null ? #occupation_name : #employer_position)"
+    },
+    "targets": [
+      {
+        "type": "property",
+        "target": "finl_prof_cmts"
+      }
+    ]
+  }
+]
